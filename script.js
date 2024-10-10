@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let chart;
     let populationData = [];
 
-    // Fetch population data for the whole country upon page load
+
     const fetchAllPopulationData = async () => {
         const url = "https://statfin.stat.fi/PxWeb/api/v1/en/StatFin/synt/statfin_synt_pxt_12dy.px";
 
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     "code": "Alue",
                     "selection": {
                         "filter": "item",
-                        "values": ["SSS"]  // code for the whole country
+                        "values": ["SSS"] 
                     }
                 },
                 {
@@ -49,9 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
             body: JSON.stringify(requestBody)
         });
         const data = await response.json();
-        populationData = data.value; // Store the fetched population data
-
-        // Initialize the chart
+        populationData = data.value; 
         initializeChart(populationData);
     };
 
@@ -137,7 +135,6 @@ document.addEventListener("DOMContentLoaded", function() {
         
         populationData = data.value; 
 
-        // Update the chart with the new population data
         chart.update({
             labels: [
                 "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007",
@@ -181,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     fetchMunicipalityCodes();
-    fetchAllPopulationData(); // Fetch data for the whole country on page load
+    fetchAllPopulationData(); 
     document.getElementById("submit-data").addEventListener("click", function() {
         const inputArea = document.getElementById("input-area").value.toLowerCase().trim();
 
